@@ -1,0 +1,501 @@
+<RecognizerScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BgBox:
+            bg_color: '2B2B2B'
+            orientation: 'vertical'
+            size_hint: 1, 0.1145
+            padding: self.width * 0.0195
+            BoxLayout:
+                orientation: 'horizontal'
+                HexRoundedButton:
+                    size_hint: 0.2255, 1
+                    text: "Настройки"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.change_to_menu()
+                HexLabel:
+                    text: 'Распознавание с камеры'
+                    font_size: dp(24)
+                    color_hex: 'FFFFFF'
+                Widget:
+                    size_hint: 0.2255, 1
+            
+        BgBox:
+            id: body
+            bg_color: '656565'
+            padding: self.width * 0.230, self.width * 0.0195, self.width * 0.230, self.width * 0.0195
+            RoundedBgBox:
+                id: recognizer
+                spacing: root.width * 0.0195
+                padding: root.width * 0.0195
+                bg_color: '2B2B2B'
+                orientation: 'vertical'
+                BoxLayout:
+                    id: camera_box     
+                HexRoundedButton:
+                    size_hint: 1, 0.1
+                    text: "Распознать товар"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.recognize()
+
+
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BgBox:
+            bg_color: '2B2B2B'
+            orientation: 'vertical'
+            size_hint: 1, 0.1145
+            padding: self.width * 0.0195
+            BoxLayout:
+                orientation: 'horizontal'
+                Widget:
+                    size_hint: 0.2255, 1
+                HexLabel:
+                    text: 'Меню'
+                    font_size: dp(24)
+                    color_hex: 'FFFFFF'
+                Widget:
+                    size_hint: 0.2255, 1
+            
+        BgBox:
+            bg_color: '656565'
+            padding: self.width * 0.332, self.height * 0.125, self.width * 0.332, self.height * 0.2558
+            spacing: self.width * 0.0195
+            orientation: 'vertical'
+            HexRoundedButton:
+                text: "Добавить товар"
+                bg_hex: "FFFFFF"
+                bg_hex_down: "A5CEFF"
+                text_color_hex: "2B2B2B"
+                font_size: 16
+                font_name: "fonts/Roboto-Bold.ttf"
+                on_release: root.change_to('EditProductScreen')
+            HexRoundedButton:    
+                text: "Редактировать товар"
+                bg_hex: "FFFFFF"
+                bg_hex_down: "A5CEFF"
+                text_color_hex: "2B2B2B"
+                font_size: 16
+                font_name: "fonts/Roboto-Bold.ttf"
+                on_release: root.change_to('CatalogScreen', 'edit')
+            HexRoundedButton:
+                    
+                text: "Удалить товар"
+                bg_hex: "FFFFFF"
+                bg_hex_down: "A5CEFF"
+                text_color_hex: "2B2B2B"
+                font_size: 16
+                font_name: "fonts/Roboto-Bold.ttf"
+                on_release: root.change_to('CatalogScreen', 'delete')
+            HexRoundedButton:
+                    
+                text: "Дополнительно"
+                bg_hex: "FFFFFF"
+                bg_hex_down: "A5CEFF"
+                text_color_hex: "2B2B2B"
+                font_size: 16
+                font_name: "fonts/Roboto-Bold.ttf"
+                on_release: root.change_to('')
+            HexRoundedButton:
+                text: "Вернуться в рабочий режим"
+                bg_hex: "2B2B2B"
+                bg_hex_down: "A5CEFF"
+                text_color_hex: "FFFFFF"
+                font_size: 16
+                font_name: "fonts/Roboto-Bold.ttf"
+                on_release: root.change_to('RecognizerScreen')
+
+
+<EditProductScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BgBox:
+            bg_color: '2B2B2B'
+            orientation: 'vertical'
+            size_hint: 1, 0.1145
+            padding: self.width * 0.0195
+            BoxLayout:
+                orientation: 'horizontal'
+                HexRoundedButton:
+                    size_hint: 0.2255, 1
+                    text: "Вернуться"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.back_to_menu()
+                HexLabel:
+                    text: 'Информация о товаре'
+                    font_size: dp(24)
+                    color_hex: 'FFFFFF'
+                HexRoundedButton:
+                    size_hint: 0.2255, 1
+                    text: "Далее"
+                    bg_hex: "1CC62A"
+                    bg_hex_down: "6DFF79"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.go_to_learn_screen()
+        BgBox:
+            bg_color: '656565'
+            BoxLayout:
+                padding: self.height * 0.080
+                spacing: self.height * 0.080
+                RoundedBgBox:
+                    bg_color: 'FFFFFF'
+                    orientation: 'vertical'
+                    padding: self.width * 0.046
+                    spacing: self.width * 0.046
+                    BoxLayout:
+                        size_hint: 1, 0.33
+                        orientation: 'vertical'
+                        HexLabel:
+                            size_hint: 1, 0.55
+                            text: 'PLU код'
+                            font_size: dp(16)
+                            color_hex: '2B2B2B'
+                        StrokeBgBox:
+                            bg_color: 'DEDEDE'
+                            PLUTextInput:
+                                id: plu_code
+                                padding: [0, (self.height - self.line_height) / 2]
+                                hint_text: 'Введите PLU'
+                                background_normal: ''
+                                background_active: ''
+                                background_color: 0, 0, 0, 0
+                                foreground_color: 0, 0, 0, 1
+                                cursor_color: 0.1686, 0.1686, 0.1686, 1
+                                halign: 'center'
+                                valign: 'middle'
+                                multiline: False
+                                font_size: dp(16) 
+                    BoxLayout:
+                        Image:
+                            id: card_image_preview
+                            source: root.card_image
+                    BoxLayout:
+                        size_hint: 1, 0.5
+                        orientation: 'vertical'
+                        HexLabel:
+                            size_hint: 1, 0.3
+                            text: 'Наименование'
+                            font_size: dp(16)
+                            color_hex: '2B2B2B'
+                        StrokeBgBox:
+                            bg_color: 'DEDEDE'
+                            NameTextInput:
+                                id: title
+                                padding: [0, (self.height - self.line_height) / 8]
+                                hint_text: 'Введите название'
+                                background_normal: ''
+                                background_active: ''
+                                background_color: 0, 0, 0, 0
+                                foreground_color: 0, 0, 0, 1
+                                cursor_color: 0.1686, 0.1686, 0.1686, 1
+                                halign: 'center'
+                                valign: 'middle'
+                                multiline: True
+                                font_size: dp(16)
+    
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.3
+                        HexLabel:
+                            size_hint: 1, 0.55
+                            text: 'Цена за кг.'
+                            font_size: dp(16)
+                            color_hex: '2B2B2B'
+                        StrokeBgBox:
+                            bg_color: 'DEDEDE'
+                            PriceTextInput:
+                                id: price_per_kg
+                                padding: [0, (self.height - self.line_height) / 2]
+                                hint_text: 'Введите цену'
+                                background_normal: ''
+                                background_active: ''
+                                background_color: 0, 0, 0, 0
+                                foreground_color: 0, 0, 0, 1
+                                cursor_color: 0.1686, 0.1686, 0.1686, 1
+                                halign: 'center'
+                                valign: 'middle'
+                                multiline: False
+                                font_size: dp(16) 
+            
+                RoundedBgBox:
+                    bg_color: 'FFFFFF'
+                    padding: self.width * 0.046
+                    spacing: self.width * 0.046
+                    orientation: 'vertical'
+                    RoundedBgBox:
+                        bg_color:'2B2B2B'
+                        size_hint: 1, 0.75
+                        BoxLayout:
+                            id: camera_box
+                    RoundedBgBox:
+                        size_hint: 1, 0.25
+                        bg_color:'2B2B2B'
+                        HexRoundedButton:
+                            size_hint: 0.2255, 1
+                            text: "Сделать картинку для карточки"
+                            bg_hex: "2466FA"
+                            bg_hex_down: "77A1FF"
+                            text_color_hex: "FFFFFF"
+                            font_size: 16
+                            font_name: "fonts/Roboto-Bold.ttf"
+                            on_release: root.make_photo_to_card()
+
+
+<LearnProductScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BgBox:
+            bg_color: '2B2B2B'
+            orientation: 'vertical'
+            size_hint: 1, 0.1145
+            padding: self.width * 0.0195
+            BoxLayout:
+                orientation: 'horizontal'
+                HexRoundedButton:
+                    size_hint: 0.2255, 1
+                    text: "Назад"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.back_to_info_screen()
+                HexLabel:
+                    text: 'Добавить снимки для распознавания'
+                    font_size: dp(24)
+                    color_hex: 'FFFFFF'
+                HexRoundedButton:
+                    size_hint: 0.2255, 1
+                    text: "Сохранить"
+                    bg_hex: "1CC62A"
+                    bg_hex_down: "6DFF79"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.save_product()
+        BgBox:
+            bg_color: '656565'
+            padding: self.width * 0.295, self.height * 0.080, self.width * 0.295, self.height * 0.080
+            RoundedBgBox:
+                orientation: 'vertical'
+                bg_color: '2B2B2B'
+                padding: self.width * 0.046
+                spacing: self.width * 0.046
+                BoxLayout:
+                    size_hint: 1, 0.13
+                    spacing: self.width * 0.051
+                    RoundedBgBox:
+                        bg_color: 'FFFFFF'
+                        radius: 10
+                        HexLabel:
+                            text: root.status
+                            font_size: dp(14)
+                            color_hex: '2B2B2B'
+                    HexRoundedButton:
+                        radius: 10
+                        text: "Начать сначала"
+                        bg_hex: "FF4242"
+                        bg_hex_down: "FFC1C1"
+                        text_color_hex: "FFFFFF"
+                        font_size: 14
+                        font_name: "fonts/Roboto-Bold.ttf"
+                        on_release: root.restart_make_photo()
+                RoundedBgBox:
+                    bg_color: 'FFFFFF'
+                    BoxLayout:
+                        id: camera_box
+                HexRoundedButton:
+                    size_hint: 1, 0.13
+                    text: "Сделать снимок"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.make_photo()
+
+
+<CatalogScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BgBox:
+            bg_color: '2B2B2B'
+            orientation: 'vertical'
+            size_hint: 1, 0.1145
+            padding: self.width * 0.0195
+            BoxLayout:
+                orientation: 'horizontal'
+                HexRoundedButton:
+                    id: catalog_button
+                    size_hint: 0.23, 1
+                    text: "В меню"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.go_to_menu()
+                HexLabel:
+                    id: catalog_title
+                    size_hint: 0.54, 1
+                    text: 'Каталог'
+                    font_size: dp(24)
+                    color_hex: 'FFFFFF'
+                BoxLayout:
+                    size_hint: 0.23, 1
+                    spacing: root.width * 0.0195
+                    HexRoundedButton:
+                        text: "Назад"
+                        bg_hex: "1CC62A"
+                        bg_hex_down: "6DFF79"
+                        text_color_hex: "FFFFFF"
+                        font_size: 16
+                        font_name: "fonts/Roboto-Bold.ttf"
+                        on_release: root.change_page('prev')
+                    HexRoundedButton:
+                        text: "Далее"
+                        bg_hex: "1CC62A"
+                        bg_hex_down: "6DFF79"
+                        text_color_hex: "FFFFFF"
+                        font_size: 16
+                        font_name: "fonts/Roboto-Bold.ttf"
+                        on_release: root.change_page('next')
+        BgBox:
+            bg_color: '656565'
+            GridLayout:
+                id: catalog_grid
+                padding: self.width * 0.0195
+                spacing: self.width * 0.0195
+                cols: 4
+
+
+<ItemPickerScreen>
+    BoxLayout:
+        orientation: 'vertical'
+        BgBox:
+            bg_color: '2B2B2B'
+            orientation: 'vertical'
+            size_hint: 1, 0.1145
+            padding: self.width * 0.0195
+            BoxLayout:
+                orientation: 'horizontal'
+                HexRoundedButton:
+                    id: catalog_button
+                    size_hint: 0.23, 1
+                    text: "В меню"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.go_to_menu()
+                HexLabel:
+                    size_hint: 0.54, 1
+                    text: 'Результаты поиска'
+                    font_size: dp(24)
+                    color_hex: 'FFFFFF'
+                BoxLayout:
+                    size_hint: 0.23, 1
+                    spacing: root.width * 0.0195
+                    Widget:
+                   
+        BgBox:
+            bg_color: '656565'
+            GridLayout:
+                id: picker_grid
+
+
+<ResultScreen>
+    BoxLayout:
+        orientation: 'vertical'
+        BgBox:
+            bg_color: '2B2B2B'
+            orientation: 'vertical'
+            size_hint: 1, 0.1145
+            padding: self.width * 0.0195
+            BoxLayout:
+                orientation: 'horizontal'
+                HexRoundedButton:
+                    id: catalog_button
+                    size_hint: 0.23, 1
+                    text: "В меню"
+                    bg_hex: "2466FA"
+                    bg_hex_down: "77A1FF"
+                    text_color_hex: "FFFFFF"
+                    font_size: 16
+                    font_name: "fonts/Roboto-Bold.ttf"
+                    on_release: root.go_to_menu()
+                HexLabel:
+                    size_hint: 0.54, 1
+                    text: 'Печать этикетки'
+                    font_size: dp(24)
+                    color_hex: 'FFFFFF'
+                BoxLayout:
+                    size_hint: 0.23, 1
+                    spacing: root.width * 0.0195
+                    Widget:
+                    
+                   
+        BgBox:
+            bg_color: '656565'
+            padding: self.width * 0.182, self.height * 0.129, self.width * 0.182, self.height * 0.2588
+            spacing: self.width * 0.0244
+            BoxLayout:
+                id: card_place  
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: root.width * 0.0244
+                RoundedBgBox:
+                    orientation: 'vertical'
+                    bg_color: 'FFFFFF'
+                    HexLabel:
+                        text: 'Вес'
+                        font_size: dp(16)
+                        color_hex: '2B2B2B'
+                    HexLabel:
+                        id: weight
+                        text: '123'
+                        font_size: dp(20)
+                        color_hex: '2B2B2B'
+                        font_name: 'Roboto-Bold.ttf'
+                RoundedBgBox:
+                    orientation: 'vertical'
+                    bg_color: 'FFFFFF'
+                    HexLabel:
+                        text: 'Цена за кг'
+                        font_size: dp(16)
+                        color_hex: '2B2B2B'
+                    HexLabel:
+                        id: price_per_kg
+                        text: '123'
+                        font_size: dp(20)
+                        color_hex: '2B2B2B'
+                        font_name: 'Roboto-Bold.ttf'
+                RoundedBgBox:
+                    orientation: 'vertical'
+                    bg_color: 'FFFFFF'
+                    HexLabel:
+                        text: 'Итого'
+                        font_size: dp(16)
+                        color_hex: '2B2B2B'
+                    HexLabel:
+                        id: total
+                        text: '123'
+                        font_size: dp(20)
+                        color_hex: '2B2B2B'
+                        font_name: 'Roboto-Bold.ttf'

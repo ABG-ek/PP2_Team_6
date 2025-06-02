@@ -1,0 +1,94 @@
+<BgBox>:
+    canvas.before:
+        Color:
+            rgba: self.bg
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<RoundedBgBox>:
+    canvas.before:
+        Color:
+            rgba: self.bg
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(self.radius)]
+
+
+<StrokeBgBox>:
+    canvas:
+        Color:
+            rgba: self.bg
+        Line:
+            width: 1.5
+            rounded_rectangle: self.x, self.y, self.width, self.height, dp(10)
+     
+
+
+<HexRoundedButton>:
+    orientation: "vertical"
+    canvas.before:
+        Color:
+            rgba: self.bg_color_down if self.state == 'down' else self.bg_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(self.radius)]
+
+    Label:
+        text: root.text
+        font_name: root.font_name
+        font_size: dp(root.font_size)
+        color: root.text_color
+        halign: "center"
+        valign: "middle"
+        text_size: self.size
+
+
+<HexLabel>:
+    color: root.color_rgba
+
+
+<Card>:
+    orientation: 'vertical'
+    padding: self.width * 0.05
+    spacing: self.width * 0.05
+    bg_hex: 'FFFFFF'
+    bg_hex_down: '5EBEFF'
+    canvas.before:
+        Color:
+            rgba: self.bg_color_down if self.state == 'down' else self.bg_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(self.radius)]
+    HexLabel:
+        size_hint: 1, 0.1
+        text: 'PLU '+ root.plu_code
+        font_size: dp(root.card_size)
+        color_hex: '2B2B2B'
+        text_size: self.size
+        halign: "center"  # или "left", "right"
+        valign: "middle"  # или "top", "bottom"
+    Image:
+        id: image
+        size_hint: 1, 0.5
+        source: root.card_image
+    HexLabel:
+        size_hint: 1, 0.3
+        text: root.title
+        font_size: dp(root.card_size)
+        font_name: 'fonts/Roboto-Bold.ttf'
+        color_hex: '2B2B2B'
+        text_size: self.size
+        halign: "center"  # или "left", "right"
+        valign: "middle"  # или "top", "bottom"
+    HexLabel:
+        size_hint: 1, 0.1
+        text: root.price_per_kg+ ' Руб/кг.'
+        font_size: dp(root.card_size)
+        color_hex: '2B2B2B'
+        text_size: self.size
+        halign: "center"  # или "left", "right"
+        valign: "middle"  # или "top", "bottom"
