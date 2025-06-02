@@ -1,1 +1,1 @@
-# PP2_STRIZH_Team_6
+# PP2_Team_6
